@@ -168,6 +168,35 @@ python3 scripts/analyze_results.py results/*.jsonl \
   --suite collective --op allreduce --csv allreduce.csv
 ```
 
+Plot figures as PNG files:
+
+```bash
+python3 scripts/plot_results.py results/*.jsonl --out-dir figures
+```
+
+Plot only one operation:
+
+```bash
+python3 scripts/plot_results.py results/*.jsonl \
+  --suite collective --op allreduce --kind latency
+```
+
+Plot speedup against a baseline run:
+
+```bash
+python3 scripts/plot_results.py \
+  results/mpi-probe-openmpi-default-*.jsonl \
+  results/mpi-probe-openmpi-ucc-*.jsonl \
+  --kind speedup \
+  --baseline-label mpi-probe-openmpi-default-n2-rpn8-np16
+```
+
+`plot_results.py` requires `matplotlib`:
+
+```bash
+python3 -m pip install matplotlib
+```
+
 The analyzer adds:
 
 - `imb_%`: `(max_us - min_us) / avg_us * 100`, a quick imbalance indicator.
