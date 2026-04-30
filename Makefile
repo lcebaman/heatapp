@@ -1,4 +1,4 @@
-CC ?= mpicc
+CC = mpicc
 CFLAGS ?= -O3 -std=c11 -Wall -Wextra
 LDFLAGS ?=
 LDLIBS ?= -lm
